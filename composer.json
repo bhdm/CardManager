@@ -34,7 +34,8 @@
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "sonata-project/doctrine-orm-admin-bundle": "^3.0",
         "sonata-project/admin-bundle": "^3.4",
-        "knplabs/knp-menu-bundle": "^2.1"
+        "knplabs/knp-menu-bundle": "^2.1",
+        "doctrine/doctrine-fixtures-bundle": "^2.3"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

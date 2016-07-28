@@ -15,7 +15,13 @@ class IndexController extends Controller
      */
     public function indexAction(Request $request)
     {
-
         return [];
+    }
+
+    /**
+     * @Route("/register-card/skzi")
+     */
+    public function registerCardSkziAction(){
+
     }
 }

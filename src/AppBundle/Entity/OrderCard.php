@@ -20,7 +20,7 @@ class OrderCard
     const STATUS_MANUFACTURED = 4;
     const STATUS_SENT = 5;
     const STATUS_RECEIVED = 6;
-    const STATUS_DENIED = -1;
+    const STATUS_DENIED = 7;
 
     # Типы карт
     const TYPE_SKZI = 0;
@@ -57,9 +57,9 @@ class OrderCard
     private $updated;
 
     /**
-     * @var int
+     * @var OrderStatus
      *
-     * @ORM\Column(name="status", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OrderStatus", inversedBy="orders")
      */
     private $status;
 
@@ -71,11 +71,25 @@ class OrderCard
     private $count;
 
     /**
-     * @var int
+     * @var OrderType
      *
-     * @ORM\Column(name="type", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OrderType", inversedBy="orders")
      */
     private $type;
+
+    /**
+     * @var OrderCategory
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OrderCategory", inversedBy="orders")
+     */
+    private $category;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="price", type="integer")
+     */
+    private $price;
 
 
     public function __construct()
@@ -161,7 +175,7 @@ class OrderCard
     /**
      * Get status
      *
-     * @return int
+     * @return OrderStatus
      */
     public function getStatus()
     {
@@ -209,7 +223,7 @@ class OrderCard
     /**
      * Get type
      *
-     * @return int
+     * @return OrderType
      */
     public function getType()
     {
@@ -231,6 +245,39 @@ class OrderCard
     {
         $this->user = $user;
     }
+
+    /**
+     * @return int
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * @return OrderCategory
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param OrderCategory $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
 
 
 }
